@@ -12,6 +12,7 @@ import Home from './Pages/Home';
 import AllArticles from './Pages/AllArticles';
 import PostArticle from './Pages/PostArticle';
 import MyArticles from './Pages/MyArticles';
+import NotFound from './Pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {path: '/allarticles' , Component: AllArticles},
       {path: '/postarticle' , Component: PostArticle},
       {path: '/myarticles' , Component: MyArticles},
+      {path: '*' , Component: NotFound},
     ]
   },
 ]);
