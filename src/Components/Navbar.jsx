@@ -1,7 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { Authcontext } from "../Context/AuthContext";
 
 const Navbar = () => {
+  const {user,logout} =use(Authcontext)
+  console.log(user);
   const links = (
     <>
       <NavLink
@@ -48,6 +51,11 @@ const Navbar = () => {
       </NavLink>
     </>
   );
+  
+  const handleLogout = ()=> {
+    return logout()
+  }
+
 
   return (
     <div className="text-black navbar bg-gradient-to-r from-[#EEF2FF] via-[#E0F2FE] to-[#F0FDFA]   shadow-sm">
@@ -97,7 +105,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-x-6">{links}</ul>
       </div>
       <div className="navbar-end mr-2">
-        <a className="btn">Login</a>
+        {user ? <button onClick={handleLogout} className="btn">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
       </div>
       <div className="dropdown dropdown-end mr-2">
         <div
@@ -105,12 +113,9 @@ const Navbar = () => {
           role="button"
           className="btn btn-ghost btn-circle avatar"
         >
-          <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            />
-          </div>
+          <div className="tooltip tooltip-bottom" >
+                <img src={user?.photoURL} className="w-10 h-10 rounded-full" />
+              </div>
         </div>
         <ul
           tabIndex={0}
@@ -123,7 +128,7 @@ const Navbar = () => {
              Post Article
           </Link>
           <Link>
-             Logout
+            <button onClick={handleLogout}>Logout</button>
           </Link>
           
         </ul>
