@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="text-black navbar bg-gradient-to-r from-[#EEF2FF] via-[#E0F2FE] to-[#F0FDFA]   shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,7 +77,6 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Learnify</a>
         <span className="relative">
           <svg
             className="w-6 h-6 text-primary"
@@ -92,6 +91,7 @@ const Navbar = () => {
           </svg>
           <span className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full top-0 left-3 animate-ping"></span>
         </span>
+        <a className="btn btn-ghost text-xl ">Learnify</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-x-6">{links}</ul>
