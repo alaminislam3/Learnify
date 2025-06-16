@@ -5,15 +5,17 @@ import Swal from "sweetalert2";
 
 
 const Register = () => {
-  const { createUser } = use(Authcontext);
+  const { createUser ,updateUser,setUser} = use(Authcontext);
   const [error,setError]=useState("")
   const navigate =useNavigate()
   const handlerSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
+    const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, email, password);
+
+    // console.log(name, email, password);
 
     // Validate password before trying to create user
     const passwordValidate = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -28,7 +30,12 @@ const Register = () => {
 
     createUser(email, password)
       .then((res) => {
-        Swal.fire({
+        const createdUser = res.user;
+  
+        return updateUser({ displayName: name, photoURL: photo }).then(() => {
+          setUser({ ...createdUser, displayName: name, photoURL: photo });
+  
+          Swal.fire({
             icon: "success",
             title: "Registration Successful!",
             text: "Welcome to the app!",
@@ -37,10 +44,11 @@ const Register = () => {
           });
   
           navigate("/");
-        console.log(res);
+        });
       })
       .catch((error) => {
-        error;
+        setError(error.message || "Something went wrong.");
+        console.log(error);
       });
   };
 
@@ -62,6 +70,13 @@ const Register = () => {
             name="email"
             className="input"
             placeholder="Email"
+          />
+          <label className="label">Photo</label>
+          <input
+            type="text"
+            name="photo"
+            className="input"
+            placeholder="Photo URL"
           />
           <label className="label">Password</label>
           <input

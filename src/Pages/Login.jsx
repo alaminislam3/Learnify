@@ -1,11 +1,13 @@
 import React, { use } from "react";
-import { Link,  useNavigate } from "react-router";
+import { Link,  useLocation,  useNavigate } from "react-router";
 import { Authcontext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 
 const Login = () => {
      const {loginUser,googleSing} = use(Authcontext);
       const navigate=useNavigate();
+      const location = useLocation();
+      // const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin =e=> {
@@ -15,8 +17,9 @@ const Login = () => {
        console.log(email,password);
        
 
-       loginUser(email,password).then(res=> {console.log(res)
-           navigate('/')
+       loginUser(email,password).then(res=> {
+        navigate(`${location.state? location.state : '/' }`)
+           console.log(res)
         })
         .catch(errro=> {
             console.log(errro);

@@ -16,6 +16,8 @@ import NotFound from './Pages/NotFound';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Context/AuthProvider';
+import PrivateRoute from './Components/PrivateRoute';
+import ArticleDetails from './Pages/ArticleDetails';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +26,16 @@ const router = createBrowserRouter([
     children: [
       {index: true , Component: Home},
       {path: '/allarticles' , Component: AllArticles},
-      {path: '/postarticle' , Component: PostArticle},
-      {path: '/myarticles' , Component: MyArticles},
+      {path: '/postarticle' , 
+        element : <PrivateRoute>
+          <PostArticle></PostArticle>
+           </PrivateRoute> 
+        },
+      {path: '/myarticles' ,
+       element: <PrivateRoute>
+           <MyArticles> </MyArticles>
+      </PrivateRoute>},
+      {path: '/article/:id' , Component: ArticleDetails}
     ]
   },
   {path: '*' , Component: NotFound},
