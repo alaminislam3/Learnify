@@ -18,6 +18,8 @@ import Register from './Pages/Register';
 import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './Components/PrivateRoute';
 import ArticleDetails from './Pages/ArticleDetails';
+import CategoryList from './Components/CategoryList';
+import CategoryPage from './Components/CategoryPage';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +37,17 @@ const router = createBrowserRouter([
        element: <PrivateRoute>
            <MyArticles> </MyArticles>
       </PrivateRoute>},
-      {path: '/article/:id' , Component: ArticleDetails}
+      {path: '/article/:id' , Component: ArticleDetails},
+       {
+        path: '/categories' , Component: CategoryList
+       },
+       {
+        path: '/category/:categoryName' , Component: CategoryPage
+       }
+
+      //       
+// <Route path="/categories" element={<CategoryList />} />
+// <Route path="/category/:categoryName" element={<CategoryPage />} />
     ]
   },
   {path: '*' , Component: NotFound},
