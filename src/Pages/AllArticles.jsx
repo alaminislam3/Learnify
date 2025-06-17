@@ -1,43 +1,76 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router'; 
 
 const AllArticles = () => {
-  const [articles, setArticles] = useState([]);
+  const [allArticles, setAllArticles] = useState([]); // সব আর্টিকেল
+  const [filteredArticles, setFilteredArticles] = useState([]); // ফিল্টার করা ডেটা
+  const [selectedCategory, setSelectedCategory] = useState('');
 
+  // dummy fetch just once (simulate API)
   useEffect(() => {
     fetch('http://localhost:3000/articles')
       .then(res => res.json())
-      .then(data => setArticles(data));
+      .then(data => {
+        setAllArticles(data);
+        setFilteredArticles(data); // শুরুতে সব দেখাবো
+      });
   }, []);
+
+  // 🔁 onChange এ লোকাল ফিল্টার
+  const handleCategoryChange = (e) => {
+    const category = e.target.value;
+    setSelectedCategory(category);
+
+    if (category === '') {
+      setFilteredArticles(allArticles); // all
+    } else {
+      const filtered = allArticles.filter(article =>
+        article.category.toLowerCase() === category.toLowerCase()
+      );
+      setFilteredArticles(filtered);
+    }
+  };
+
+  const categories = ['Tech', 'Life Style', 'Food', 'Sports', 'AI', 'Game'];
 
   return (
     <div className="max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">All Articles</h1>
 
+      {/* 🔍 Category Filter */}
+      <div className="flex justify-center mb-6">
+        <select onChange={handleCategoryChange} value={selectedCategory}>
+          <option value="">All Categories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* 📄 Articles */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map(article => (
+        {filteredArticles.map((article) => (
           <div
             key={article._id}
-            className="flex items-start border rounded-lg p-4 shadow hover:shadow-md bg-white"
+            className="border rounded-lg p-4 shadow hover:shadow-md bg-white"
           >
             <img
               src={article.thumbnail || "https://via.placeholder.com/150"}
               alt={article.title}
-              className="w-32 h-32 object-cover rounded mr-4"
+              className="w-full h-40 object-cover rounded mb-4"
             />
-
-            <div>
-              <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
-              <p className="text-sm text-gray-600 mb-2">
-                By {article.author} • {new Date(article.date).toLocaleDateString()}
-              </p>
-              <Link
-                to={`/article/${article._id}`}
-                className="text-blue-500 hover:underline"
-              >
-                Read More
-              </Link>
-            </div>
+            <h2 className="text-xl font-semibold mb-1">{article.title}</h2>
+            <p className="text-sm text-gray-600 mb-2">
+              {article.category} | By {article.authorName}
+            </p>
+            <p className="text-sm text-gray-700 mb-3">
+              {article.content.slice(0, 100)}...
+            </p>
+            <button
+              className="text-blue-600 font-semibold hover:underline"
+              onClick={() => window.location.href = `/article/${article._id}`}
+            >
+              Read More
+            </button>
           </div>
         ))}
       </div>

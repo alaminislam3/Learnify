@@ -143,7 +143,7 @@ const Navbar = () => {
       <div className="">
       <button
         onClick={toggleTheme}
-        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-white hover:bg-[#2C2C2C]"
+        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-black hover:bg-[#8fcca1]"
       >
         <Icon size={22} />
       </button>
