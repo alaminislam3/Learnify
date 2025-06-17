@@ -111,13 +111,9 @@ const Navbar = () => {
       <div className="navbar-end mr-2">
         {user ? <button onClick={handleLogout} className="btn">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
       </div>
-      <div className="dropdown dropdown-end mr-2">
-      <button
-        onClick={toggleTheme}
-        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-white hover:bg-[#2C2C2C]"
-      >
-        <Icon size={22} />
-      </button>
+      <div className="dropdown dropdown-end mr-2 ">
+      <div className="flex ">
+     
         <div
           tabIndex={0}
           role="button"
@@ -127,6 +123,7 @@ const Navbar = () => {
                 <img src={user?.photoURL} className="w-10 h-10 rounded-full" />
               </div>
         </div>
+      </div>
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -142,6 +139,14 @@ const Navbar = () => {
           </Link>
           
         </ul>
+      </div>
+      <div className="">
+      <button
+        onClick={toggleTheme}
+        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-white hover:bg-[#2C2C2C]"
+      >
+        <Icon size={22} />
+      </button>
       </div>
     </div>
   );
