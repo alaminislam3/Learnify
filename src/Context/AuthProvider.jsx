@@ -4,9 +4,26 @@ import {  createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,Go
 import { auth } from '../Firebase/Firebase.config';
 
 
+
 const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [theme, setTheme] = useState("light");
+
+     // Load theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+  /* upper theme  */
 
     //  create user (singup)/Registration
     const createUser = (email, password) => {
@@ -63,12 +80,16 @@ const AuthProvider = ({children}) => {
         setUser,
         logout,
         googleSing,
-        updateUser
+        updateUser,
+        theme,
+    toggleTheme,
 
     }
     
     return <Authcontext value={userInfo}>
+      <div data-theme={theme} className={`min-h-screen ${theme === "dark" ? "dark" : ""}`}>
           {children}
+          </div>
          </Authcontext>
 };
 

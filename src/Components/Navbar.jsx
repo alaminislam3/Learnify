@@ -1,8 +1,12 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { Authcontext } from "../Context/AuthContext";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = () => {
+  const { theme, toggleTheme } = use(Authcontext);
+  const Icon = theme === "light" ? FaMoon : FaSun;
+ 
   const {user,logout} =use(Authcontext)
   console.log(user);
   const links = (
@@ -108,6 +112,12 @@ const Navbar = () => {
         {user ? <button onClick={handleLogout} className="btn">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
       </div>
       <div className="dropdown dropdown-end mr-2">
+      <button
+        onClick={toggleTheme}
+        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-white hover:bg-[#2C2C2C]"
+      >
+        <Icon size={22} />
+      </button>
         <div
           tabIndex={0}
           role="button"
