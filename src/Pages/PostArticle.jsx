@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { Authcontext } from "../Context/AuthContext";
 
 const PostArticle = () => {
-  const { user } = useContext(Authcontext); 
+  const { user } = useContext(Authcontext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const PostArticle = () => {
     };
 
     // send to backend
-    fetch("http://localhost:3000/articles", {
+    fetch("https://learnify-server-seven.vercel.app/articles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,12 +42,40 @@ const PostArticle = () => {
     <div className="max-w-2xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Post a New Article</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="title" placeholder="Title" required className="w-full p-2 border" />
-        <textarea name="content" placeholder="Content" required className="w-full p-2 border h-32" />
-        <input name="category" placeholder="Category (e.g., Tech)" required className="w-full p-2 border" />
-        <input name="tags" placeholder="Tags (comma-separated)" className="w-full p-2 border" />
-        <input name="thumbnail" placeholder="Image URL" className="w-full p-2 border" />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Post</button>
+        <input
+          name="title"
+          placeholder="Title"
+          required
+          className="w-full p-2 border"
+        />
+        <textarea
+          name="content"
+          placeholder="Content"
+          required
+          className="w-full p-2 border h-32"
+        />
+        <input
+          name="category"
+          placeholder="Category (e.g., Tech)"
+          required
+          className="w-full p-2 border"
+        />
+        <input
+          name="tags"
+          placeholder="Tags (comma-separated)"
+          className="w-full p-2 border"
+        />
+        <input
+          name="thumbnail"
+          placeholder="Image URL"
+          className="w-full p-2 border"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Post
+        </button>
       </form>
     </div>
   );

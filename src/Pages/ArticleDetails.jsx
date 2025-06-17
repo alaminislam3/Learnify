@@ -12,7 +12,7 @@ const ArticleDetails = () => {
   const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`https://learnify-server-seven.vercel.app/articles/${id}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [id]);
@@ -27,11 +27,14 @@ const ArticleDetails = () => {
       date: new Date(),
     };
 
-    const res = await fetch(`http://localhost:3000/articles/${id}/comment`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(commentData),
-    });
+    const res = await fetch(
+      `https://learnify-server-seven.vercel.app/articles/${id}/comment`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(commentData),
+      }
+    );
 
     if (res.ok) {
       setArticle((prev) => ({
@@ -44,9 +47,12 @@ const ArticleDetails = () => {
   };
 
   const handleLike = async () => {
-    const res = await fetch(`http://localhost:3000/articles/${id}/like`, {
-      method: "PATCH",
-    });
+    const res = await fetch(
+      `https://learnify-server-seven.vercel.app/articles/${id}/like`,
+      {
+        method: "PATCH",
+      }
+    );
 
     if (res.ok) {
       setArticle((prev) => ({

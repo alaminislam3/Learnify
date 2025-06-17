@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Authcontext } from "../Context/AuthContext";
 
-
 const MyArticles = () => {
   const { user } = use(Authcontext);
   const [myArticles, setMyArticles] = useState([]);
@@ -10,9 +9,11 @@ const MyArticles = () => {
 
   // Load user's articles
   useEffect(() => {
-    fetch(`http://localhost:3000/myarticles?email=${user.email}`)
-      .then(res => res.json())
-      .then(data => setMyArticles(data));
+    fetch(
+      `https://learnify-server-seven.vercel.app/myarticles?email=${user.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setMyArticles(data));
   }, [user]);
 
   // Delete Article
@@ -23,15 +24,15 @@ const MyArticles = () => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
-    }).then(result => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/articles/${id}`, {
+        fetch(`https://learnify-server-seven.vercel.app/articles/${id}`, {
           method: "DELETE",
         })
-          .then(res => res.json())
+          .then((res) => res.json())
           .then(() => {
             Swal.fire("Deleted!", "Your article has been deleted.", "success");
-            setMyArticles(prev => prev.filter(a => a._id !== id));
+            setMyArticles((prev) => prev.filter((a) => a._id !== id));
           });
       }
     });
@@ -48,16 +49,21 @@ const MyArticles = () => {
       tags: form.tags.value.split(","),
     };
 
-    fetch(`http://localhost:3000/articles/${selectedArticle._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updated),
-    })
-      .then(res => res.json())
+    fetch(
+      `https://learnify-server-seven.vercel.app/articles/${selectedArticle._id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      }
+    )
+      .then((res) => res.json())
       .then(() => {
         Swal.fire("Updated!", "Article updated successfully", "success");
-        const updatedList = myArticles.map(article =>
-          article._id === selectedArticle._id ? { ...article, ...updated } : article
+        const updatedList = myArticles.map((article) =>
+          article._id === selectedArticle._id
+            ? { ...article, ...updated }
+            : article
         );
         setMyArticles(updatedList);
         setSelectedArticle(null);
@@ -78,7 +84,7 @@ const MyArticles = () => {
             </tr>
           </thead>
           <tbody>
-            {myArticles.map(article => (
+            {myArticles.map((article) => (
               <tr key={article._id}>
                 <td className="p-2">{article.title}</td>
                 <td className="p-2">{article.category}</td>

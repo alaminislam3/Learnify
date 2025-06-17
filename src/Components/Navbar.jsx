@@ -8,7 +8,7 @@ const Navbar = () => {
   const Icon = theme === "light" ? FaMoon : FaSun;
  
   const {user,logout} =use(Authcontext)
-  console.log(user);
+  // console.log(user);
   const links = (
     <>
       <NavLink

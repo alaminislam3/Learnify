@@ -14,12 +14,12 @@ const Login = () => {
           e.preventDefault()
        const email= e.target.email.value   
        const password= e.target.password.value;
-       console.log(email,password);
+      //  console.log(email,password);
        
 
        loginUser(email,password).then(res=> {
         navigate(`${location.state? location.state : '/' }`)
-           console.log(res)
+          //  console.log(res)
         })
         .catch(errro=> {
             console.log(errro);

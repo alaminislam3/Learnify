@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const AllArticles = () => {
-  const [allArticles, setAllArticles] = useState([]); // সব আর্টিকেল
-  const [filteredArticles, setFilteredArticles] = useState([]); // ফিল্টার করা ডেটা
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [allArticles, setAllArticles] = useState([]);
+  const [filteredArticles, setFilteredArticles] = useState([]); 
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  // dummy fetch just once (simulate API)
+  
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
-      .then(res => res.json())
-      .then(data => {
+    fetch("https://learnify-server-seven.vercel.app/articles")
+      .then((res) => res.json())
+      .then((data) => {
         setAllArticles(data);
-        setFilteredArticles(data); // শুরুতে সব দেখাবো
+        setFilteredArticles(data); 
       });
   }, []);
 
-  // 🔁 onChange এ লোকাল ফিল্টার
+  
   const handleCategoryChange = (e) => {
     const category = e.target.value;
     setSelectedCategory(category);
 
-    if (category === '') {
+    if (category === "") {
       setFilteredArticles(allArticles); // all
     } else {
-      const filtered = allArticles.filter(article =>
-        article.category.toLowerCase() === category.toLowerCase()
+      const filtered = allArticles.filter(
+        (article) => article.category.toLowerCase() === category.toLowerCase()
       );
       setFilteredArticles(filtered);
     }
   };
 
-  const categories = ['Tech', 'Life Style', 'Food', 'Sports', 'AI', 'Game'];
+  const categories = ["Tech", "Life Style", "Food", "Sports", "AI", "Game"];
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -40,8 +40,10 @@ const AllArticles = () => {
       <div className="flex justify-center mb-6">
         <select onChange={handleCategoryChange} value={selectedCategory}>
           <option value="">All Categories</option>
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat}</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
           ))}
         </select>
       </div>
@@ -67,7 +69,7 @@ const AllArticles = () => {
             </p>
             <button
               className="text-blue-600 font-semibold hover:underline"
-              onClick={() => window.location.href = `/article/${article._id}`}
+              onClick={() => (window.location.href = `/article/${article._id}`)}
             >
               Read More
             </button>

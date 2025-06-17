@@ -6,7 +6,7 @@ const ArticleCard = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles?category=${name}`)
+    fetch(`https://learnify-server-seven.vercel.app/articles?category=${name}`)
       .then((res) => res.json())
       .then((data) => setArticles(data));
   }, [name]);

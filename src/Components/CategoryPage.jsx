@@ -6,9 +6,11 @@ const CategoryPage = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/category/${categoryName}`)
-      .then(res => res.json())
-      .then(data => setArticles(data));
+    fetch(
+      `https://learnify-server-seven.vercel.app/articles/category/${categoryName}`
+    )
+      .then((res) => res.json())
+      .then((data) => setArticles(data));
   }, [categoryName]);
 
   return (
@@ -18,12 +20,16 @@ const CategoryPage = () => {
         <p>No articles found in this category.</p>
       ) : (
         <div className="grid gap-4">
-          {articles.map(article => (
+          {articles.map((article) => (
             <div key={article._id} className="p-4 border rounded">
               <h3 className="text-xl font-semibold">{article.title}</h3>
               <p className="text-sm text-gray-600">By {article.authorName}</p>
-              <p className="text-gray-700">{article.content.slice(0, 100)}...</p>
-              <a href={`/articles/${article._id}`} className="text-blue-500">Read More</a>
+              <p className="text-gray-700">
+                {article.content.slice(0, 100)}...
+              </p>
+              <a href={`/articles/${article._id}`} className="text-blue-500">
+                Read More
+              </a>
             </div>
           ))}
         </div>
