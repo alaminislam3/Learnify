@@ -109,7 +109,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-x-6">{links}</ul>
       </div>
       <div className="navbar-end mr-2">
-        {user ? <button onClick={handleLogout} className="btn">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
+        {user ? <button onClick={handleLogout} className="btn btn-primary">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
       </div>
       <div className="dropdown dropdown-end mr-2 ">
       <div className="flex ">

@@ -1,32 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 
 const Hero = () => {
-    return (
-        <div
-  className="hero min-h-screen"
-  style={{
-    backgroundImage:
-      "url(https://i.ibb.co/4nVzckFr/jeshoots-com-p-UAM5h-Pa-CRI-unsplash.jpg)",
-  }}
->
-  <div className="hero-overlay"></div>
-  <div className="hero-content text-neutral-content text-center">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold"> Share Your Knowledge</h1>
-      <p className="mb-5">
-      Empower the student community by writing articles, sharing insights, and exploring ideas together.
+  return (
+    <div
+      className="relative min-h-screen bg-cover bg-center py-12 sm:py-16 lg:py-24 flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://i.ibb.co/mVFSqhRt/pexels-tima-miroshnichenko-5427862.jpg')",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0  bg-opacity-60"></div>
 
-      </p>
-      <Link to={'/allarticles'}>
-      <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded font-medium transition">
-      Explore Articles
-    </button>
-      </Link>
+      {/* Content */}
+      <div className="relative z-10 text-white text-center px-4 sm:px-6">
+        <div className="max-w-xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-4">
+            Share Your Knowledge
+          </h1>
+          <p className="text-base sm:text-lg font-bold mb-6">
+            Empower the student community by writing articles, sharing insights,
+            and exploring ideas together.
+          </p>
+          <Link to="/allarticles">
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded font-semibold transition duration-300">
+              Explore Articles
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-    );
+  );
 };
 
 export default Hero;
