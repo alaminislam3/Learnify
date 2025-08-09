@@ -112,7 +112,7 @@ const Navbar = () => {
           >
             <path d="M2 7c2-1 4-1 6 0s4 1 6 0 4-1 6 0v13c-2-1-4-1-6 0s-4 1-6 0-4-1-6 0V7z" />
           </svg>
-          <span className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full top-0 left-3 animate-ping"></span>
+          <span className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full top-0 left-3"></span>
         </span>
         <a className="btn btn-ghost text-xl ">Learnify</a>
       </div>
