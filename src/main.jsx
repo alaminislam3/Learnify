@@ -20,6 +20,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ArticleDetails from "./Pages/ArticleDetails";
 import CategoryList from "./Components/CategoryList";
 import CategoryPage from "./Components/CategoryPage";
+import About from "./Components/About";
 
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       { path: "/article/:id", element: <ArticleDetails /> },
       { path: "/categories", element: <CategoryList /> },
       { path: "/category/:categoryName", element: <CategoryPage /> },
+      {path: "/about" , Component: About}
     ],
   },
   { path: "*", element: <NotFound /> },
