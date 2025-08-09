@@ -16,7 +16,7 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className="py-12 sm:py-16 lg:py-24    mx-auto p-4">
+    <div className="py-12 sm:py-16 lg:py-24    mx-auto ">
       <h2 className="text-2xl font-bold mb-4">Browse by Category</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat, i) => (

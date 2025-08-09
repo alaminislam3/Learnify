@@ -3,11 +3,12 @@ import { Link, NavLink } from "react-router";
 import { Authcontext } from "../Context/AuthContext";
 import { FaMoon, FaSun } from "react-icons/fa";
 
+
 const Navbar = () => {
   const { theme, toggleTheme } = use(Authcontext);
   const Icon = theme === "light" ? FaMoon : FaSun;
- 
-  const {user,logout} =use(Authcontext)
+
+  const { user, logout } = use(Authcontext);
   // console.log(user);
   const links = (
     <>
@@ -55,15 +56,15 @@ const Navbar = () => {
       </NavLink>
     </>
   );
-  
-  const handleLogout = ()=> {
-    return logout()
-  }
 
+  const handleLogout = () => {
+    return logout();
+  };
 
   return (
-    <div className="text-black navbar bg-gradient-to-r from-[#EEF2FF] via-[#E0F2FE] to-[#F0FDFA]   shadow-sm">
-      <div className="navbar-start">
+    
+    <div className="text-black flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
+      <div className="navbar-start ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -109,46 +110,52 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-x-6">{links}</ul>
       </div>
       <div className="navbar-end mr-2">
-        {user ? <button onClick={handleLogout} className="btn btn-primary">Logout</button> :  <Link to={`/login`}> <button className="btn">Login</button></Link> }
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-primary">
+            Logout
+          </button>
+        ) : (
+          <Link to={`/login`}>
+            {" "}
+            <button className="btn">Login</button>
+          </Link>
+        )}
       </div>
       <div className="dropdown dropdown-end mr-2 ">
-      <div className="flex ">
-     
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle avatar"
-        >
-          <div className="tooltip tooltip-bottom" >
-                <img src={user?.photoURL} className="w-10 h-10 rounded-full" />
-              </div>
+        <div className="flex ">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div className="tooltip tooltip-bottom">
+              <img src={user?.photoURL} className="w-10 h-10 rounded-full" />
+            </div>
+          </div>
         </div>
-      </div>
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
-          <Link to={'/myarticles'}>
-             My Article
-          </Link>
-          <Link to={'/postarticle'}>
-             Post Article
-          </Link>
+          <Link to={"/myarticles"}>My Article</Link>
+          <Link to={"/postarticle"}>Post Article</Link>
           <Link>
             <button onClick={handleLogout}>Logout</button>
           </Link>
-          
         </ul>
       </div>
       <div className="">
-      <button
-        onClick={toggleTheme}
-        className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-black hover:bg-[#8fcca1]"
-      >
-        <Icon size={22} />
-      </button>
+        <button
+          onClick={toggleTheme}
+          className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-black hover:bg-[#8fcca1]"
+        >
+          <Icon size={22} />
+        </button>
       </div>
     </div>
+    
+    
+    
   );
 };
 

@@ -12,7 +12,8 @@ const ArticleCard = () => {
   }, [name]);
 
   return (
-    <div className="min-h-screen bg-base-100 py-12 sm:py-16 lg:py-24 px-6">
+    <div className="min-h-screen py-12 sm:py-16 lg:py-24">
+      
       <h2 className="text-3xl font-bold text-center mb-8 text-indigo-700">
         {name} Articles
       </h2>
@@ -50,6 +51,7 @@ const ArticleCard = () => {
           ))}
         </div>
       )}
+      
     </div>
   );
 };

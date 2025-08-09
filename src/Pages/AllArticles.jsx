@@ -33,7 +33,7 @@ const AllArticles = () => {
   const categories = ["Tech", "Life Style", "Food", "Sports", "AI", "Game"];
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="mx-auto p-4 container px-6 sm:px-6 md:px-12 lg:px-24">
       <h1 className="text-3xl font-bold mb-6 text-center">All Articles</h1>
 
       {/* 🔍 Category Filter */}

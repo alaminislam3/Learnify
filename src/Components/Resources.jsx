@@ -2,8 +2,8 @@ import React from "react";
 
 const Resources = () => {
   return (
-    <section className=" py-12 sm:py-16 lg:py-24 px-4">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className=" py-12 sm:py-16 lg:py-24 ">
+      <div className=" mx-auto text-center">
         <h2 className="text-3xl font-bold text-sky-800 mb-8">
           📚 Free Learning Resources
         </h2>
