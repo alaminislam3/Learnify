@@ -1,36 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../Components/Loading";
 
 const AllArticles = () => {
-  const [allArticles, setAllArticles] = useState([]);
-  const [filteredArticles, setFilteredArticles] = useState([]); 
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  
-  useEffect(() => {
-    fetch("https://learnify-server-seven.vercel.app/articles")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllArticles(data);
-        setFilteredArticles(data); 
-      });
-  }, []);
+  // ✅ useQuery দিয়ে ডেটা ফেচ
+  const { data: allArticles = [], isLoading, error } = useQuery({
+    queryKey: ["articles"],
+    queryFn: async () => {
+      const res = await fetch("https://learnify-server-seven.vercel.app/articles");
+      return res.json();
+    },
+  });
 
-  
-  const handleCategoryChange = (e) => {
-    const category = e.target.value;
-    setSelectedCategory(category);
-
-    if (category === "") {
-      setFilteredArticles(allArticles); // all
-    } else {
-      const filtered = allArticles.filter(
-        (article) => article.category.toLowerCase() === category.toLowerCase()
-      );
-      setFilteredArticles(filtered);
-    }
-  };
+  // 🔍 Category Filter
+  const filteredArticles =
+    selectedCategory === ""
+      ? allArticles
+      : allArticles.filter(
+          (article) =>
+            article.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
 
   const categories = ["Tech", "Life Style", "Food", "Sports", "AI", "Game"];
+
+  // ⏳ লোডিং স্টেট
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+
+  // ❌ এরর স্টেট
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-red-500 font-semibold">
+          Failed to load articles. Please try again.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto p-4 container px-6 sm:px-6 md:px-12 lg:px-24">
@@ -38,7 +47,10 @@ const AllArticles = () => {
 
       {/* 🔍 Category Filter */}
       <div className="flex justify-center mb-6">
-        <select onChange={handleCategoryChange} value={selectedCategory}>
+        <select
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          value={selectedCategory}
+        >
           <option value="">All Categories</option>
           {categories.map((cat) => (
             <option key={cat} value={cat}>
@@ -69,7 +81,9 @@ const AllArticles = () => {
             </p>
             <button
               className="text-blue-600 font-semibold hover:underline"
-              onClick={() => (window.location.href = `/article/${article._id}`)}
+              onClick={() =>
+                (window.location.href = `/article/${article._id}`)
+              }
             >
               Read More
             </button>
