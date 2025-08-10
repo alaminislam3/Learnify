@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
@@ -37,37 +37,49 @@ const Footer = () => {
         {/* Links */}
         <div className="flex flex-col gap-2">
           <span className="footer-title">Links</span>
-          <Link to="/" className="link link-hover">
+          <Link to="/about" className="link link-hover">
             About Us
           </Link>
-          <Link to="/" className="link link-hover">
+          <Link to="/about" className="link link-hover">
             Contact Us
-          </Link>
-          <Link to="/" className="link link-hover">
-            Terms & Conditions
           </Link>
         </div>
 
-       
         <div>
           <span className="footer-title">Follow Us</span>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="text-2xl text-blue-500 hover:text-blue-600">
+            <a
+              href="https://twitter.com/YourUsername"
+              className="text-2xl text-blue-500 hover:text-blue-600"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fa-brands fa-twitter"></i>
             </a>
-            <a href="#" className="text-2xl text-blue-700 hover:text-blue-800">
+
+            <a
+              href="https://linkedin.com/in/alaminislam1"
+              className="text-2xl text-blue-700 hover:text-blue-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fa-brands fa-linkedin"></i>
             </a>
-            <a href="#" className="text-2xl text-red-600 hover:text-red-700">
+
+            <a
+              href="https://youtube.com/@YourChannelName"
+              className="text-2xl text-red-600 hover:text-red-700"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fa-brands fa-youtube"></i>
             </a>
           </div>
         </div>
       </div>
 
-  
       <div className="mt-10 text-center text-sm text-gray-500">
-        ©  Learnify — All rights reserved.
+        © Learnify — All rights reserved.
       </div>
     </footer>
   );
