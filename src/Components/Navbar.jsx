@@ -33,7 +33,9 @@ const Navbar = () => {
       >
         All Articles
       </NavLink>
-      <NavLink
+     {
+      user && <>
+       <NavLink
         to="/postarticle"
         className={({ isActive }) =>
           isActive
@@ -54,6 +56,8 @@ const Navbar = () => {
       >
         My Articles
       </NavLink>
+       </>
+     }
       <NavLink
         to="/about"
         className={({ isActive }) =>
@@ -73,7 +77,7 @@ const Navbar = () => {
 
   return (
     
-    <div className="text-black flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
+    <div className="text-black sticky top-0 z-50 flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
       <div className="navbar-start ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
