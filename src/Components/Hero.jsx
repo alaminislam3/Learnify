@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Hero = () => {
   return (
     <div
-      className="opacity-90  min-h-[500px] sm:min-h-[600px] lg:min-h-[670px]  h-[80vh] relative bg-cover bg-center py-12 sm:py-16 lg:py-24 flex items-center justify-center "
+      className=" min-h-[500px] sm:min-h-[600px] lg:min-h-[670px]  h-[80vh] relative bg-cover bg-center py-12 sm:py-16 lg:py-24 flex items-center justify-center "
       style={{
         backgroundImage:
           "url('https://i.ibb.co/mVFSqhRt/pexels-tima-miroshnichenko-5427862.jpg')",
@@ -24,7 +24,7 @@ const Hero = () => {
             and exploring ideas together.
           </p>
           <Link to="/allarticles">
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded transition duration-300">
+            <button className="bg-[#36b1a0] btn-ghost dark:bg-[#134E4A] text-white font-bold px-6 py-3 rounded transition duration-300">
               Explore Articles
             </button>
           </Link>

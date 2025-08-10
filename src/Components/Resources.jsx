@@ -4,7 +4,7 @@ const Resources = () => {
   return (
     <section className=" py-12 sm:py-16 lg:py-24 ">
       <div className=" mx-auto text-center">
-        <h2 className="text-3xl font-bold text-sky-800 mb-8">
+        <h2 className="text-3xl font-bold text-black dark:text-white mb-8">
           📚 Free Learning Resources
         </h2>
 
@@ -22,7 +22,7 @@ const Resources = () => {
               href="https://javascript.info"
               target="_blank"
               rel="noreferrer"
-              className="btn btn-sm btn-primary"
+              className="btn btn-sm bg-[#36b1a0] dark:bg-[#134E4A]"
             >
               Visit
             </a>
@@ -40,7 +40,7 @@ const Resources = () => {
               href="https://www.freecodecamp.org"
               target="_blank"
               rel="noreferrer"
-              className="btn btn-sm btn-primary"
+              className="btn btn-sm bg-[#36b1a0] dark:bg-[#134E4A]"
             >
               Visit
             </a>
@@ -58,7 +58,7 @@ const Resources = () => {
               href="https://developer.mozilla.org"
               target="_blank"
               rel="noreferrer"
-              className="btn btn-sm btn-primary"
+              className="btn btn-sm bg-[#36b1a0] dark:bg-[#134E4A]"
             >
               Visit
             </a>

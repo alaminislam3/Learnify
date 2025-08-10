@@ -49,7 +49,7 @@ const AllArticles = () => {
 
   return (
     <div className="mx-auto p-4 py-10 container px-6 sm:px-6 md:px-12 lg:px-24">
-      <h1 className="text-3xl font-bold mb-6 text-center">All Articles</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center ">All Articles</h1>
 
       {/* 🔍 Category Filter */}
       <div className="flex justify-center mb-6">
@@ -71,7 +71,7 @@ const AllArticles = () => {
         {filteredArticles.map((article) => (
           <div
             key={article._id}
-            className="border rounded-lg p-4 shadow hover:shadow-md bg-white"
+            className=" rounded-lg p-4 shadow-2xl hover:shadow-md bg-base-200"
           >
             <img
               src={article.thumbnail || "https://via.placeholder.com/150"}
@@ -86,7 +86,7 @@ const AllArticles = () => {
               {article.content.slice(0, 100)}...
             </p>
             <button
-              className="text-blue-600 font-semibold hover:underline"
+              className="btn bg-[#36b1a0] dark:bg-[#134E4A] font-semibold hover:underline"
               onClick={() => (window.location.href = `/article/${article._id}`)}
             >
               Read More

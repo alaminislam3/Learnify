@@ -13,7 +13,7 @@ const ArticleCard = () => {
 
   return (
     <div className="min-h-screen px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20">
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 text-indigo-700">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 	text-slate-900 dark:text-white">
         {name} Articles
       </h2>
 
@@ -41,7 +41,7 @@ const ArticleCard = () => {
                 </p>
                 
                 <Link to={`/article/${article._id}`}>
-                  <button className="btn btn-sm btn-outline btn-primary mt-4 w-full sm:w-auto">
+                  <button className="btn btn-sm p-3 bg-[#36b1a0] dark:bg-[#134E4A] mt-4 w-full sm:w-auto">
                     Read More
                   </button>
                 </Link>

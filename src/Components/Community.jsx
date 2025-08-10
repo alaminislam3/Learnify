@@ -13,10 +13,10 @@ const Community = () => {
 
         {/* Text Content */}
         <div className="text-center md:text-left space-y-4 md:w-1/2">
-          <h2 className="text-3xl font-bold text-indigo-800">
+          <h2 className="text-3xl font-bold text-black dark:text-white">
             Join Our Learning Community
           </h2>
-          <p className="text-gray-700">
+          <p className="text-black dark:text-white">
             Connect with passionate learners, share your knowledge, ask
             questions, and grow together with us!
           </p>
@@ -24,7 +24,7 @@ const Community = () => {
             href="https://www.facebook.com/groups/your-group-link"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-primary"
+            className="btn bg-[#36b1a0] dark:bg-[#134E4A]"
           >
             Join Our Facebook Group
           </a>

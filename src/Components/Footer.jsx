@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-[#EEF2FF] via-[#E0F2FE] to-[#F0FDFA]  py-10 px-4 md:px-20">
+    <footer className="bg-gradient-to-r bg-[#41f0db] py-10 px-4 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo & Name */}
         <div>
@@ -26,7 +26,7 @@ const Footer = () => {
               </svg>
               <span className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full top-0 left-3 "></span>
             </span>
-            Learnify
+           <p className="text-black dark:text-black">Learnfy</p>
           </Link>
           <p className="text-sm text-gray-500">
             A place to share knowledge, ideas & insights with the student
@@ -36,17 +36,17 @@ const Footer = () => {
 
         {/* Links */}
         <div className="flex flex-col gap-2">
-          <span className="footer-title">Links</span>
-          <Link to="/about" className="link link-hover">
+          <span className="footer-title text-black dark:text-black">Links</span>
+          <Link to="/about" className="link link-hover text-black dark:text-black">
             About Us
           </Link>
-          <Link to="/about" className="link link-hover">
+          <Link to="/about" className="link link-hover text-black dark:text-black">
             Contact Us
           </Link>
         </div>
 
         <div>
-          <span className="footer-title">Follow Us</span>
+          <span className="footer-title text-black dark:text-black">Follow Us</span>
           <div className="flex gap-4 mt-2">
             <a
               href="https://twitter.com/YourUsername"

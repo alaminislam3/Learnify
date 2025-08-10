@@ -77,7 +77,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="text-black sticky top-0 z-50 flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
+    <div className="text-black  dark:bg-black sticky top-0 z-50 flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
       <div className="navbar-start ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -118,20 +118,20 @@ const Navbar = () => {
           </svg>
           <span className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full top-0 left-3"></span>
         </span>
-        <a className="btn btn-ghost text-xl ">Learnify</a>
+        <a className="ml-2 text-black dark:text-white text-xl ">Learnify</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-x-6">{links}</ul>
       </div>
       <div className="navbar-end mr-2">
         {user ? (
-          <button onClick={handleLogout} className="btn btn-primary">
+          <button onClick={handleLogout} className="btn bg-[#36b1a0]">
             Logout
           </button>
         ) : (
           <Link to={`/login`}>
             {" "}
-            <button className="btn">Login</button>
+            <button className="btn bg-[#36b1a0] dark:bg-[#134E4A]  text-white font-semibold px-4 py-2 rounded-lg  hover:from-[#0D9488] hover:to-[#14B8A6] transition duration-300">Login</button>
           </Link>
         )}
       </div>
@@ -142,7 +142,7 @@ const Navbar = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="tooltip tooltip-bottom">
+            <div className="tooltip tooltip-bottom ">
               <img src={user?.photoURL} className="w-10 h-10 rounded-full" />
             </div>
           </div>
@@ -153,8 +153,8 @@ const Navbar = () => {
         >
           <Link to={"/myarticles"}>My Article</Link>
           <Link to={"/postarticle"}>Post Article</Link>
-          <Link>
-            <button onClick={handleLogout}>Logout</button>
+          <Link className="">
+            <button className="bg-[#14B8A6]" onClick={handleLogout}>Logout</button>
           </Link>
         </ul>
       </div>
