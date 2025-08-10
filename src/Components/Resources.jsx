@@ -25,7 +25,7 @@ const Resources = () => {
 
   return (
     <section className="py-12 sm:py-16 lg:py-24 px-4">
-      <div className="mx-auto text-center ">
+      <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold text-black dark:text-white mb-12">
           📚 Free Learning Resources
         </h2>
