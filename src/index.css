@@ -1,7 +1,13 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *))
 
-/* imgbb.com
-i.ibb.co
-cdn.imgbb.com */
+
+
+@plugin "daisyui/theme" {
+    name: "dark";
+    default: true;
+    --color-primary: ;
+    --color-secondary: teal;
+  }
+
+  @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *))

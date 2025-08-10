@@ -35,7 +35,7 @@ const ArticleCard = () => {
               />
 
               <div className="flex-1">
-                <h3 className="text-lg sm:text-xl font-semibold">{article.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold  dark:text-black">{article.title}</h3>
                 <p className="text-gray-600 text-sm mt-2 mb-3">
                   {article.content.slice(0, 70)}...
                 </p>

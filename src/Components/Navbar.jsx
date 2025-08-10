@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router";
 import { Authcontext } from "../Context/AuthContext";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-
 const Navbar = () => {
   const { theme, toggleTheme } = use(Authcontext);
   const Icon = theme === "light" ? FaMoon : FaSun;
@@ -16,8 +15,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 underline font-semibold"
-            : "text-gray-600 hover:text-blue-600 font-semibold"
+            ? "underline font-semibold text-blue-600 dark:text-blue-400"
+            : "font-semibold text-gray-600 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
         }
       >
         Home
@@ -27,43 +26,45 @@ const Navbar = () => {
         to="/allarticles"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 underline font-semibold"
-            : "text-gray-600 hover:text-blue-600 font-semibold"
+            ? "underline font-semibold text-blue-600 dark:text-blue-400"
+            : "font-semibold text-gray-600 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
         }
       >
         All Articles
       </NavLink>
-     {
-      user && <>
-       <NavLink
-        to="/postarticle"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-600 underline font-semibold"
-            : "text-gray-600 hover:text-blue-600 font-semibold"
-        }
-      >
-        Post Articles
-      </NavLink>
 
-      <NavLink
-        to="/myarticles"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-600 underline font-semibold"
-            : "text-gray-600 hover:text-blue-600 font-semibold"
-        }
-      >
-        My Articles
-      </NavLink>
-       </>
-     }
+      {user && (
+        <>
+          <NavLink
+            to="/postarticle"
+            className={({ isActive }) =>
+              isActive
+                ? "underline font-semibold text-blue-600 dark:text-blue-400"
+                : "font-semibold text-gray-600 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+            }
+          >
+            Post Articles
+          </NavLink>
+
+          <NavLink
+            to="/myarticles"
+            className={({ isActive }) =>
+              isActive
+                ? "underline font-semibold text-blue-600 dark:text-blue-400"
+                : "font-semibold text-gray-600 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+            }
+          >
+            My Articles
+          </NavLink>
+        </>
+      )}
+
       <NavLink
         to="/about"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 underline font-semibold"
-            : "text-gray-600 hover:text-blue-600 font-semibold"
+            ? "underline font-semibold text-blue-600 dark:text-blue-400"
+            : "font-semibold text-gray-600 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
         }
       >
         About
@@ -76,7 +77,6 @@ const Navbar = () => {
   };
 
   return (
-    
     <div className="text-black sticky top-0 z-50 flex justify-center p-3 shadow-sm px-6 sm:px-6 md:px-12 lg:px-24">
       <div className="navbar-start ">
         <div className="dropdown">
@@ -167,9 +167,6 @@ const Navbar = () => {
         </button>
       </div>
     </div>
-    
-    
-    
   );
 };
 

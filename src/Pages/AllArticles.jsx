@@ -6,10 +6,16 @@ const AllArticles = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // ✅ useQuery দিয়ে ডেটা ফেচ
-  const { data: allArticles = [], isLoading, error } = useQuery({
+  const {
+    data: allArticles = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
-      const res = await fetch("https://learnify-server-seven.vercel.app/articles");
+      const res = await fetch(
+        "https://learnify-server-seven.vercel.app/articles"
+      );
       return res.json();
     },
   });
@@ -27,7 +33,7 @@ const AllArticles = () => {
 
   // ⏳ লোডিং স্টেট
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
 
   // ❌ এরর স্টেট
@@ -81,9 +87,7 @@ const AllArticles = () => {
             </p>
             <button
               className="text-blue-600 font-semibold hover:underline"
-              onClick={() =>
-                (window.location.href = `/article/${article._id}`)
-              }
+              onClick={() => (window.location.href = `/article/${article._id}`)}
             >
               Read More
             </button>

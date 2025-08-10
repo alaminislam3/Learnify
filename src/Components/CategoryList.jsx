@@ -14,16 +14,16 @@ const CategoryList = () => {
         setCategories(uniqueCategories);
       });
   }, []);
-
+ 
   return (
     <div className="py-12 sm:py-16 lg:py-24    mx-auto ">
-      <h2 className="text-2xl font-bold mb-4">Browse by Category</h2>
+      <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">Browse by Category</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat, i) => (
           <Link
             to={`/category/${cat}`}
             key={i}
-            className="bg-gray-200 text-center p-3 rounded hover:bg-blue-200 transition"
+            className="bg-gray-200 text-center p-3 rounded dark:text-black hover:bg-blue-200 transition"
           >
             {cat}
           </Link>
