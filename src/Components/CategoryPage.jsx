@@ -14,7 +14,7 @@ const CategoryPage = () => {
   }, [categoryName]);
 
   return (
-    <div className="max-w-4xl py-12 sm:py-16 lg:py-35  mx-auto p-4">
+    <div className="max-w-4xl py-12 sm:py-16 lg:py-40  mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Articles in: {categoryName}</h2>
       {articles.length === 0 ? (
         <p>No articles found in this category.</p>
@@ -27,7 +27,7 @@ const CategoryPage = () => {
               <p className="text-gray-700">
                 {article.content.slice(0, 100)}...
               </p>
-              <a href={`/articles/${article._id}`} className="text-blue-500">
+              <a href={`/articles/${article._id}`} className="btn bg-[#36b1a0] dark:bg-[#134E4A] mt-2">
                 Read More
               </a>
             </div>

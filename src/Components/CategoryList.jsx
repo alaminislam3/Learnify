@@ -1,5 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import {
+  FaLaptopCode,
+  FaGraduationCap,
+  FaRobot,
+  FaDatabase,
+  FaCss3Alt,
+  FaJsSquare,
+  FaReact,
+  FaPython,
+  FaCloud,
+  FaTools,
+  FaGlobe,
+} from "react-icons/fa";
+
+const iconMap = {
+  Programming: <FaLaptopCode size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Education: <FaGraduationCap size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  AI: <FaRobot size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Database: <FaDatabase size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  CSS: <FaCss3Alt size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  JavaScript: <FaJsSquare size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  React: <FaReact size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Python: <FaPython size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Cloud: <FaCloud size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Tools: <FaTools size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+  Web: <FaGlobe size={40} className="mx-auto mb-2 text-[#14B8A6]" />,
+};
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -14,18 +41,29 @@ const CategoryList = () => {
         setCategories(uniqueCategories);
       });
   }, []);
- 
+
+  const getIcon = (category) => {
+    return iconMap[category] || (
+      <FaGraduationCap size={40} className="mx-auto mb-2 text-[#14B8A6]" />
+    );
+  };
+
   return (
-    <div className="py-12 sm:py-16 lg:py-24    mx-auto ">
-      <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">Browse by Category</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="py-12 sm:py-16 lg:py-10 mx-auto  px-4">
+      <h2 className="text-3xl font-bold mb-8 text-black dark:text-white text-center">
+        Browse by Category
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {categories.map((cat, i) => (
           <Link
             to={`/category/${cat}`}
             key={i}
-            className="bg-gray-200 text-center p-3 rounded dark:text-black hover:bg-blue-200 transition"
+            className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:bg-[#41f0db] transition duration-300 flex flex-col items-center cursor-pointer"
           >
-            {cat}
+            {getIcon(cat)}
+            <span className="text-lg font-semibold text-gray-900 dark:text-gray-100 text-center">
+              {cat}
+            </span>
           </Link>
         ))}
       </div>

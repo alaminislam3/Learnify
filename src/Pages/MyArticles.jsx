@@ -24,7 +24,7 @@ const MyArticles = () => {
       );
       return res.json();
     },
-    enabled: !!user?.email, // only fetch if email exists
+    enabled: !!user?.email,
   });
 
   // Delete Article
@@ -73,35 +73,35 @@ const MyArticles = () => {
       });
   };
 
-  // Loading State
   if (isLoading || loading) {
-    return <Loading></Loading>
+    return <Loading />;
   }
 
-  // Error State
   if (isError) {
     return (
-      <div className="text-center mt-10 text-red-500">
+      <div className="text-center mt-10 text-red-500 dark:text-red-400">
         Failed to load articles. Please try again later.
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl container mx-auto px-6 md:py-30 md:my-10">
-      <h2 className="text-2xl font-bold mb-6">My Articles</h2>
+    <div className=" container mx-auto px-6 md:py-30 md:my-10">
+      <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        My Articles
+      </h2>
 
       {myArticles.length === 0 ? (
-        <div className="flex flex-col items-center text-center py-16 px-6 bg-gray-50 rounded-lg shadow-sm">
+        <div className="flex flex-col items-center text-center py-16 px-6 rounded-lg shadow-sm">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4072/4072718.png"
             alt="No Articles"
             className="w-40 mb-6"
           />
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">
             No Articles Found
           </h3>
-          <p className="text-gray-500 max-w-md mb-6">
+          <p className="text-gray-500 dark:text-gray-400 max-w-md mb-6">
             You haven’t published any articles yet. Start sharing your knowledge
             and help others learn!
           </p>
@@ -112,29 +112,42 @@ const MyArticles = () => {
           </Link>
         </div>
       ) : (
-        <div className="overflow-x-auto bg-white shadow-md rounded-lg">
-          <table className="table-auto w-full text-left border border-gray-200">
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg">
+          <table className="table-auto w-full text-left border border-gray-200 dark:border-gray-700">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="p-3 border-b">Title</th>
-                <th className="p-3 border-b">Category</th>
-                <th className="p-3 border-b">Actions</th>
+              <tr className="bg-gray-100 dark:bg-gray-700">
+                <th className="p-3 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
+                  Title
+                </th>
+                <th className="p-3 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
+                  Category
+                </th>
+                <th className="p-3 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {myArticles.map((article) => (
-                <tr key={article._id} className="hover:bg-gray-50">
-                  <td className="p-3 border-b">{article.title}</td>
-                  <td className="p-3 border-b">{article.category}</td>
-                  <td className="p-3 border-b space-x-2">
+                <tr
+                  key={article._id}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <td className="p-3 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
+                    {article.title}
+                  </td>
+                  <td className="p-3 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
+                    {article.category}
+                  </td>
+                  <td className="p-3 border-b border-gray-200 dark:border-gray-600 space-x-2">
                     <button
-                      className="bg-blue-500 px-3 py-1 text-white rounded"
+                      className="bg-blue-500 px-3 py-1 text-white rounded hover:bg-blue-600 transition"
                       onClick={() => setSelectedArticle(article)}
                     >
                       Update
                     </button>
                     <button
-                      className="bg-red-500 px-3 py-1 text-white rounded"
+                      className="bg-red-500 px-3 py-1 text-white rounded hover:bg-red-600 transition"
                       onClick={() => handleDelete(article._id)}
                     >
                       Delete
@@ -149,47 +162,49 @@ const MyArticles = () => {
 
       {/* Modal for Update */}
       {selectedArticle && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
           <form
             onSubmit={handleUpdate}
-            className="bg-white p-6 rounded shadow-lg w-[400px] space-y-4"
+            className="bg-white dark:bg-gray-900 p-6 rounded shadow-lg w-full max-w-md space-y-4"
           >
-            <h3 className="text-xl font-semibold">Update Article</h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              Update Article
+            </h3>
             <input
               name="title"
               defaultValue={selectedArticle.title}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               required
             />
             <textarea
               name="content"
               defaultValue={selectedArticle.content}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               rows="4"
               required
             />
             <input
               name="category"
               defaultValue={selectedArticle.category}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               required
             />
             <input
               name="tags"
               defaultValue={selectedArticle.tags?.join(", ")}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
             <div className="flex justify-end space-x-2">
               <button
                 type="button"
                 onClick={() => setSelectedArticle(null)}
-                className="px-3 py-1 border rounded"
+                className="px-3 py-1 border border-gray-400 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="bg-green-600 text-white px-4 py-1 rounded"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded transition"
               >
                 Save
               </button>

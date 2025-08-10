@@ -12,7 +12,7 @@ const ArticleCard = () => {
   }, [name]);
 
   return (
-    <div className="min-h-screen px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-20">
+    <div className="md:p-5 px-4 sm:px-6  py-10 sm:py-14 lg:py-10">
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 	text-slate-900 dark:text-white">
         {name} Articles
       </h2>
@@ -26,20 +26,22 @@ const ArticleCard = () => {
           {articles.map((article) => (
             <div
               key={article._id}
-              className="bg-white flex flex-col sm:flex-row items-start p-4 sm:p-5 rounded-lg shadow-md hover:shadow-lg transition-all"
+              className="bg-white flex flex-col items-start p-4 sm:p-5 rounded-lg shadow-md hover:shadow-lg transition-all"
             >
               <img
                 src={article.thumbnail}
                 alt={article.title}
-                className="w-full sm:w-32 h-48 sm:h-32 object-cover rounded mb-4 sm:mb-0 sm:mr-4"
+                className="w-full h-48 object-cover rounded mb-4"
               />
 
               <div className="flex-1">
-                <h3 className="text-lg sm:text-xl font-semibold  dark:text-black">{article.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold dark:text-black">
+                  {article.title}
+                </h3>
                 <p className="text-gray-600 text-sm mt-2 mb-3">
                   {article.content.slice(0, 70)}...
                 </p>
-                
+
                 <Link to={`/article/${article._id}`}>
                   <button className="btn btn-sm p-3 bg-[#36b1a0] dark:bg-[#134E4A] mt-4 w-full sm:w-auto">
                     Read More

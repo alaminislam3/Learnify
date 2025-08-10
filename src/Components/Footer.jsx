@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r bg-[#41f0db] py-10 px-4 md:px-20">
+    <footer className="bg-gradient-to-r bg-[#41f0db] dark:bg-[#0e4c44] py-10 px-4 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo & Name */}
         <div>

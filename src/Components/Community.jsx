@@ -2,7 +2,7 @@ import React from "react";
 
 const Community = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-24 ">
+    <section className="py-12 sm:py-16 lg:py-24 px-4">
       <div className=" mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
         {/* Banner Image */}
         <img
